@@ -3,11 +3,100 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title> 급등주 주식 매매 원칙과 학습 경로</title>
-    <!-- Tailwind CSS CDN -->
+    <title>주식 핵심 공략법 상품 상세</title>
+    <!-- Load Tailwind CSS -->
     <script src="https://cdn.tailwindcss.com"></script>
-    <!-- Font: Inter (for professional look, though native Korean fonts will also render) -->
     <style>
+        /* Inter font is default, but ensuring a clean Korean font stack */
+        :root {
+            font-family: 'Inter', system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, "Noto Sans", sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
+        }
+        /* Custom styling for the feature list icons */
+        .feature-item::before {
+            /* data-icon의 내용을 표시 */
+            content: attr(data-icon); 
+            display: inline-block;
+            margin-right: 0.5rem;
+            font-weight: bold;
+            color: #2563EB; /* 목차 구분을 위한 파란색 계열 색상 적용 */
+            width: 2rem; /* 너비를 늘려 'P1.'과 같은 텍스트가 잘 보이도록 조정 */
+            text-align: left;
+        }
+        .icon-o::before {
+            content: "O"; /* 목차와 구분하기 위해 O/X 아이콘은 그대로 유지 */
+            color: #10B981; /* Emerald green for success */
+            width: 1rem;
+            text-align: center;
+        }
+        .icon-x::before {
+            content: "X"; /* 목차와 구분하기 위해 O/X 아이콘은 그대로 유지 */
+            color: #EF4444; /* Red for exclusion */
+            width: 1rem;
+            text-align: center;
+        }
+
+        /* --- Custom CSS for 9:16 Mobile Simulation --- */
+        /* Body: 전체 화면에서 모바일 프레임을 중앙에 배치합니다. */
+        .mobile-body {
+            background-color: #F3F4F6; /* 배경색을 연한 회색으로 설정 */
+            min-height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            padding: 1rem;
+        }
+
+        /* Mobile Frame: 9:16 비율을 시뮬레이션하도록 최대 너비와 높이를 제한하고 스크롤을 허용합니다. */
+        .mobile-frame {
+            /* 9:16 비율 시뮬레이션을 위해 최대 너비를 405px로 설정 (모바일 세로 화면 기준) */
+            width: 100%;
+            max-width: 405px; 
+            /* 화면에 맞도록 최대 높이를 설정하고 스크롤을 허용 */
+            height: auto; 
+            max-height: 90vh; 
+            overflow-y: auto; 
+
+            background-color: white;
+            box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.25);
+            border-radius: 1.5rem; /* 모바일 기기 같은 둥근 모서리 */
+            display: flex; /* 내부 컨텐츠를 세로로 배열 */
+            flex-direction: column;
+        }
+        /* Header background + overlay styles */
+        .header-bg {
+            position: relative;
+            background-image: url('img.jpeg');
+            background-size: cover;
+            background-position: center center;
+            background-repeat: no-repeat;
+            /* Ensure header takes a consistent visual height on mobile */
+            height: 220px;
+            border-top-left-radius: 1.5rem;
+            border-top-right-radius: 1.5rem;
+            overflow: hidden;
+        }
+
+        /* Semi-transparent overlay for better contrast with white text */
+        .header-overlay {
+            background: linear-gradient(180deg, rgba(0,0,0,0.35), rgba(0,0,0,0.55));
+        }
+
+        /* Visually hidden but accessible helper (similar to Tailwind's sr-only) */
+        .sr-only {
+            position: absolute !important;
+            width: 1px !important;
+            height: 1px !important;
+            padding: 0 !important;
+            margin: -1px !important;
+            overflow: hidden !important;
+            clip: rect(0, 0, 0, 0) !important;
+            white-space: nowrap !important;
+            border: 0 !important;
+        }
+        
+    </style>
+
+     <style>
         @import url('https://fonts.googleapis.com/css2?family=Inter:wght@100..900&display=swap');
         body {
             font-family: 'Inter', 'Noto Sans KR', sans-serif;
@@ -18,32 +107,53 @@
             box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -2px rgba(0, 0, 0, 0.1);
         }
     </style>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        'primary-yellow': '#FFD700', /* Gold/Yellow for Purchase button */
+                        'secondary-gray': '#E5E7EB', /* Light gray for Inquiry button */
+                        'custom-red': '#EF4444',
+                        'custom-green': '#10B981',
+                    }
+                }
+            }
+        }
+    </script>
 </head>
-<body>
+<body class="mobile-body"> <!-- 9:16 시뮬레이션 레이아웃 적용 -->
 
-    <!-- Header & Navigation -->
-    <header class="sticky top-0 z-50 bg-gray-900/95 backdrop-blur-sm shadow-lg">
-        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-4 flex justify-between items-center">
-            <h1 class="text-2xl font-bold text-yellow-500">급등주 원칙의 기술</h1>
-            <a href="#purchase" class="hidden sm:inline-block bg-yellow-500 text-gray-900 font-semibold py-2 px-4 rounded-lg shadow-md hover:bg-yellow-400 transition duration-300">
-                구매하고 인생 투자 자산 만들기
-            </a>
-        </div>
-    </header>
+    <!-- Mobile Frame Simulation: 최대 너비/높이 제한 및 중앙 정렬 적용 -->
+    <div id="app" class="mobile-frame"> 
 
-    <main>
+        <!-- Header/Product Visual Section -->
+        <!-- 모바일 화면에 맞게 패딩과 텍스트 크기 조정 -->
+        <header class="text-white p-6 flex flex-col items-center justify-center space-y-4 flex-shrink-0 header-bg" style="height: 300px;">
+            <!-- Decorative background image is applied via CSS for layout and responsiveness. -->
+            <!-- Keep an accessible, visually-hidden <img> for screen readers and when CSS is disabled. -->
+            <img src="img.jpeg" alt="주식 흐름 핵심 단타 공략법 책 표지 이미지" class="sr-only">
+
+            
+        </header>
+        <!-- End Header/Product Visual Section -->
+
+
+        <!-- Product Details and CTA Card -->
+        <!-- 모바일 화면에 맞게 패딩과 텍스트 크기 조정 -->
+        <main> 
         <!-- Hero Section: 서론 & 핵심 메시지 -->
         <section class="py-20 md:py-32 bg-gray-900">
             <div class="max-w-4xl mx-auto px-4 text-center">
                 <p class="text-yellow-500 text-lg font-semibold mb-3">감이 아닌, 원칙에 기반한 데이트레이딩</p>
-                <h2 class="text-5xl md:text-6xl font-extrabold leading-tight text-white mb-6">
+                <h2 class="text-3xl font-extrabold leading-tight text-white mb-6">
                      급등 세력주 매매의 <span class="text-yellow-500">원칙</span>과 <br class="hidden sm:block">체계적인 <span class="text-yellow-500">학습 경로</span>
                 </h2>
-                <p class="text-xl text-gray-300 mb-10">
+                <p class="text-gray-300 mb-10" style="font-size: 15px;">
                     급등주는 단순한 차트 모양이나 커뮤니티 정보에 의존하는 '운에 맡겨진 기회'가 아닙니다. 
                     본 전자책 한 권으로 독자는 <strong class="font-bold text-yellow-500">스스로 기회를 발견하고 대응하는 단타의 고수</strong>가 됩니다.
                 </p>
-                <a href="#purchase" class="inline-block bg-yellow-500 text-gray-900 text-xl font-bold py-4 px-10 rounded-xl shadow-2xl hover:bg-yellow-400 transform hover:scale-105 transition duration-300">
+                <a href="#purchase" class="inline-block bg-yellow-500 text-gray-900 text-1xl font-bold py-4 px-10 rounded-xl shadow-2xl hover:bg-yellow-400 transform hover:scale-105 transition duration-300">
                     성공적인 매매 원칙 지금 바로 학습하기
                 </a>
             </div>
@@ -52,11 +162,11 @@
         <!-- Social Proof Bar (신뢰감 전달) -->
         <section class="py-10 bg-gray-700/50 border-y border-gray-600">
             <div class="max-w-7xl mx-auto px-4 text-center">
-                <p class="text-2xl sm:text-3xl font-extrabold text-white">
-                    🔥 SNS에서 가장 잘 팔린 주식 E-book 🔥
+                <p class="text-2xl sm:text-1    xl font-extrabold text-white">
+                    🔥 SNS에서 가장 잘 팔린 주식 <br>E-book 🔥
                 </p>
                 <p class="text-lg text-yellow-400 mt-2">
-                    <span class="font-bold">좋아요와 공유로 입증된</span> 주식 투자 필독서 | <span class="font-bold text-white">2,000권 이상 판매 돌파</span>
+                    <span class="font-bold">좋아요와 공유로 입증된</span> 주식 투자 필독서 <br><span class="font-bold text-white">2,000권 이상 판매 돌파</span>
                 </p>
             </div>
         </section>
@@ -64,7 +174,7 @@
         <!-- Target Audience / Pain Points Section -->
         <section class="py-16 md:py-24 bg-gray-800">
             <div class="max-w-4xl mx-auto px-4">
-                <h3 class="text-4xl font-bold text-center mb-12 text-white">⚠️ 이런 분들은 꼭 구매해야 합니다</h3>
+                <h3 class="text-2xl font-bold text-center mb-12 text-white">⚠️ 이런 분들은 꼭 구매해야 합니다</h3>
                 <div class="space-y-6">
                     
                     <!-- Pain Point 1 -->
@@ -97,8 +207,8 @@
         <!-- Differentiation Section (어설픈 전자책과는 차원이 다릅니다) -->
         <section class="py-16 bg-gray-900">
             <div class="max-w-7xl mx-auto px-4 text-center">
-                <h3 class="text-4xl font-bold mb-12 text-white">어설픈 전자책과는 <span class="text-yellow-500">차원이 다릅니다.</span></h3>
-                <div class="grid grid-cols-1 md:grid-cols-3 gap-8 text-left">
+                <h3 class="text-2xl font-bold mb-12 text-white">어설픈 전자책과는 <span class="text-yellow-500">차원이 다릅니다.</span></h3>
+                <div class="grid grid-cols-1 gap-6 text-left">
                     
                     <div class="p-6 bg-gray-800 rounded-xl shadow-lg border-l-4 border-yellow-500">
                         <p class="text-3xl font-extrabold text-white mb-2">실전 핵심 전략</p>
@@ -114,6 +224,7 @@
                         <p class="text-3xl font-extrabold text-white mb-2">투자 감각 집약</p>
                         <p class="text-gray-400">시장 흐름을 읽고 **스스로 판단할 수 있도록** 투자 감각을 길러주는, 검증된 단타 노하우 집약서.</p>
                     </div>
+                    
                 </div>
             </div>
         </section>
@@ -122,9 +233,9 @@
         <section class="py-16 md:py-24 bg-gray-900">
             <div class="max-w-7xl mx-auto px-4 text-center">
                 <p class="text-yellow-500 text-lg font-semibold mb-3">2,000+ 판매 돌파의 이유</p>
-                <h3 class="text-4xl font-bold mb-12 text-white">실제 구매자들의 <span class="text-yellow-500">폭발적 후기</span></h3>
+                <h3 class="text-3xl font-bold mb-12 text-white">실제 구매자들의 <span class="text-yellow-500">폭발적 후기</span></h3>
 
-                <div class="grid grid-cols-1 md:grid-cols-2 gap-6 text-left">
+                <div class="grid grid-cols-1 gap-6 text-left">
                     
                     <!-- Review 1 -->
                     <div class="review-card bg-gray-800 p-6 rounded-xl border border-gray-700">
@@ -160,16 +271,16 @@
         <!-- Price Justification Section (전자책 가격이 고민이신가요) -->
         <section class="py-20 md:py-28 bg-gray-700">
             <div class="max-w-4xl mx-auto px-4 text-center">
-                <h3 class="text-4xl font-extrabold text-white mb-8">전자책 가격이 고민이신가요?</h3>
+                <h3 class="text-3xl font-extrabold text-white mb-8">전자책 가격이 고민이신가요?</h3>
                 <div class="bg-gray-900 p-8 rounded-xl shadow-2xl border-2 border-yellow-500">
-                    <div class="grid grid-cols-1 md:grid-cols-3 gap-6 mb-8 text-center text-gray-300">
+                    <div class="grid grid-cols-1 gap-4 mb-8 text-center text-gray-300">
                         <p class="p-4 bg-gray-800 rounded-lg">해외여행 한 번 ✈️<br><span class="font-bold text-yellow-500">시간이 지나면 잊혀집니다.</span></p>
                         <p class="p-4 bg-gray-800 rounded-lg">명품 사러 백화점 🛍️<br><span class="font-bold text-yellow-500">유행이 지나 구형이 됩니다.</span></p>
                         <p class="p-4 bg-gray-800 rounded-lg">최신 스마트폰 📱<br><span class="font-bold text-yellow-500">곧 구형이 됩니다.</span></p>
                     </div>
                     <p class="text-2xl text-white font-semibold mb-4">하지만...</p>
                     <p class="text-4xl font-extrabold text-red-500 leading-snug">
-                        단타 매매법은 한 번 배우면<br>
+                        단타 매매법은 한 번 배우면
                         <span class="text-yellow-500">평생 쓸 수 있는 투자 자산</span>입니다!
                     </p>
                 </div>
@@ -180,7 +291,7 @@
         <section id="purchase" class="py-20 md:py-28 bg-yellow-500 text-gray-900">
             <div class="max-w-3xl mx-auto px-4 text-center">
                 <p class="text-3xl font-bold mb-4">⭐ 시간을 사는 도구 ⭐</p>
-                <h3 class="text-5xl font-extrabold mb-6 leading-tight">추석 한정 특별 판매 및 가격 안내</h3>
+                
                 <p class="text-xl mb-10">
                     본 전자책은 짧은 시간 내에 실제 적용 가능한 원칙을 제공하여, 이후의 투자 의사결정에 <strong class="font-extrabold">더 큰 자신감</strong>을 가질 수 있도록 돕습니다.
                 </p>
@@ -191,10 +302,8 @@
                     <p class="text-6xl font-extrabold my-4 text-red-600">
                         ₩99,000
                     </p>
-                    <p class="text-lg font-medium text-gray-700 mb-6">
-                        (추석 한정 기간에만 제공되는 혜택입니다. 기간 종료 후 가격이 인상될 수 있습니다.)
-                    </p>
-                    <button onclick="showPhoneModal()" class="w-full bg-gray-900 text-yellow-500 text-2xl font-bold py-4 rounded-xl shadow-lg hover:bg-gray-700 transition duration-300">
+                    
+                    <button onclick="showPhoneModal()" class="w-full bg-gray-900 text-yellow-500 text-1xl font-bold py-4 rounded-xl shadow-lg hover:bg-gray-700 transition duration-300">
                         지금 바로 구매하고 원칙 학습 시작하기
                     </button>
                 </div>
@@ -212,7 +321,9 @@
             </div>
         </section>
 
-        <!-- Disclaimer & Footer -->
+        
+
+  <!-- Disclaimer & Footer -->
         <footer class="py-10 bg-gray-900 text-center text-gray-500 text-sm">
             <div class="max-w-7xl mx-auto px-4">
                 <p class="mb-2 font-bold text-red-500">
@@ -229,8 +340,16 @@
                 </p>
             </div>
         </footer>
-    </main>
 
+
+
+
+        </main>
+        <!-- End Product Details and CTA Card -->
+
+
+
+    
     <!-- Custom Modal/Phone Input Form -->
     <div id="custom-modal" class="fixed inset-0 bg-gray-900 bg-opacity-75 hidden items-center justify-center z-[100]">
         <div class="bg-white p-6 rounded-lg shadow-xl max-w-sm w-full">
@@ -392,5 +511,42 @@
         });
     </script>
 
+
+        <!-- Action Buttons Section (Fixed at bottom within the mobile frame) -->
+        <footer class="sticky bottom-0 bg-white p-4 border-t shadow-lg flex flex-col gap-3 justify-center flex-shrink-0">
+
+            <!-- Button 2: 구매하기 (Purchase) -->
+            <button
+                onclick="showPhoneModal()"
+                class="w-full py-3 px-6 bg-primary-yellow text-gray-900 font-extrabold text-lg rounded-xl transition duration-150 hover:bg-yellow-400 active:scale-[0.98] shadow-lg"
+            >
+                구매하기
+            </button>
+        </footer>
+        <!-- End Action Buttons Section -->
+
+    </div>
+    <!-- Simple modal replacement for alerts -->
+    <script>
+        function alert(message) {
+            const modal = document.createElement('div');
+            modal.style.cssText = `
+                position: fixed; top: 0; left: 0; right: 0; bottom: 0;
+                background-color: rgba(0,0,0,0.6); display: flex;
+                justify-content: center; align-items: center; z-index: 1000;
+            `;
+            const content = document.createElement('div');
+            content.className = 'bg-white p-6 rounded-xl shadow-2xl max-w-sm w-full text-center';
+            content.innerHTML = `
+                <p class="text-lg font-medium mb-4">${message}</p>
+                <button onclick="document.body.removeChild(this.closest('div[style*=\'fixed\']'))"
+                        class="px-4 py-2 bg-blue-600 text-white rounded-lg hover:bg-blue-700 transition">
+                    확인
+                </button>
+            `;
+            modal.appendChild(content);
+            document.body.appendChild(modal);
+        }
+    </script>
 </body>
 </html>
