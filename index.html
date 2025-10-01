@@ -143,63 +143,70 @@
         <!-- 모바일 화면에 맞게 패딩과 텍스트 크기 조정 -->
         <main> 
 
+            <section class="p-4 flex-grow">
 
-                      <!-- Price and Installment Section -->
-            <div class="mb-6 border-b pb-4">
-                <!-- Original Price -->
-                <p class="text-gray-500 line-through text-base font-medium mb-1">
-                    99,000원
-                </p>
+                <!-- Price and Installment Section -->
+                <div class="mb-6 border-b pb-4">
+                    <!-- Original Price -->
+                    <p class="text-gray-500 line-through text-base font-medium mb-1">
+                        99,000원
+                    </p>
 
-                <!-- Featured Price (Monthly Payment) -->
-                <div class="flex items-end space-x-2 mb-2">
-                    <span class="text-3xl font-extrabold text-gray-900">
-                         0원 
-                    </span>
-                    <span class="bg-red-500 text-white text-xs font-bold px-1.5 py-0.5 rounded-full">
-                        
-                    </span>
-                </div>
-
-                <p class="text-xs text-gray-600 flex items-center">
-                    (VAT 포함가)
-                    <span class="ml-2 text-gray-400 cursor-pointer group relative">
-                         <span class="text-lg"></span>
-                        <span class="absolute left-1/2 -translate-x-1/2 mt-1 px-3 py-1 bg-gray-800 text-white text-xs rounded-lg opacity-0 group-hover:opacity-100 transition-opacity whitespace-nowrap z-10">
-                         
+                    <!-- Featured Price (Monthly Payment) -->
+                    <div class="flex items-end space-x-2 mb-2">
+                        <span class="text-3xl font-extrabold text-gray-900">
+                            0원 
                         </span>
-                    </span>
-                </p>
-            </div>
+                        <span class="bg-red-500 text-white text-xs font-bold px-1.5 py-0.5 rounded-full">
+                            
+                        </span>
+                    </div>
 
-            <!-- Product Features List (Table of Contents) -->
-            <div class="grid grid-cols-1 gap-4 mb-6">
-                <!-- Table of Contents Section -->
-                <div>
-                    <h3 class="text-lg font-bold text-gray-800 mb-2">목차</h3>
-                    <ul class="space-y-1.5 text-sm text-gray-700">
-                        <li class="feature-item" data-icon="1.">확실한 세력을 잡는 기술</li>
-                        <li class="feature-item" data-icon="2.">절대 수익화 비법</li>
-                        <li class="feature-item" data-icon="3.">매수/매도 지점을 결정하는 절대 법칙</li>
-                        <li class="feature-item" data-icon="4.">시장 상황별 생존 및 수익 극대화 노하우</li>
-                    </ul>
+                    <p class="text-xs text-gray-600 flex items-center">
+                        (VAT 포함가)
+                        <span class="ml-2 text-gray-400 cursor-pointer group relative">
+                            <span class="text-lg"></span>
+                            <span class="absolute left-1/2 -translate-x-1/2 mt-1 px-3 py-1 bg-gray-800 text-white text-xs rounded-lg opacity-0 group-hover:opacity-100 transition-opacity whitespace-nowrap z-10">
+                            
+                            </span>
+                        </span>
+                    </p>
                 </div>
 
-                <!-- Exclusion/Simplicity Feature (Keep this section) -->
-                <div>
-                    <h3 class="text-lg font-bold text-gray-800 mb-2">복잡함은 1도 없는 </h3>
-                    <ul class="space-y-1.5 text-sm text-gray-700">
-                        <li class="feature-item icon-x" data-icon="X">차트 분석, 재무제표 분석, 잡주 매매 X</li>
-                        <li class="feature-item icon-o" data-icon="O">하루 1시간 만으로 마음 편한 투자 O</li>
-                    </ul>
-                </div>
-            </div>
+        
 
-            <!-- Page Count / E-book information -->
-            <div class="flex justify-between items-center border-t pt-3 text-gray-600 text-sm">
-                <p>E-BOOK 페이지 수</p>
-                <p class="font-bold text-gray-800">91페이지</p>
-            </div>
+                <!-- Product Features List (Table of Contents) -->
+                <div class="grid grid-cols-1 gap-4 mb-6">
+                    <!-- Table of Contents Section -->
+                    <div>
+                        <h3 class="text-lg font-bold text-gray-800 mb-2">목차</h3>
+                        <ul class="space-y-1.5 text-sm text-gray-700">
+                            <li class="feature-item" data-icon="1.">확실한 세력을 잡는 기술</li>
+                            <li class="feature-item" data-icon="2.">절대 수익화 비법</li>
+                            <li class="feature-item" data-icon="3.">매수/매도 지점을 결정하는 절대 법칙</li>
+                            <li class="feature-item" data-icon="4.">시장 상황별 생존 및 수익 극대화 노하우</li>
+                        </ul>
+                    </div>
+
+                    <!-- Exclusion/Simplicity Feature (Keep this section) -->
+                    <div>
+                        <h3 class="text-lg font-bold text-gray-800 mb-2">복잡함은 1도 없는 </h3>
+                        <ul class="space-y-1.5 text-sm text-gray-700">
+                            <li class="feature-item icon-x" data-icon="X">차트 분석, 재무제표 분석, 잡주 매매 X</li>
+                            <li class="feature-item icon-o" data-icon="O">하루 1시간 만으로 마음 편한 투자 O</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <!-- Page Count / E-book information -->
+                <div class="flex justify-between items-center border-t pt-3 text-gray-600 text-sm">
+                    <p>E-BOOK 페이지 수</p>
+                    <p class="font-bold text-gray-800">91페이지</p>
+                </div>
+
+            </section>
+
+
         <!-- Hero Section: 서론 & 핵심 메시지 -->
         <section class="py-20 md:py-32 bg-gray-900">
             <div class="max-w-4xl mx-auto px-4 text-center">
