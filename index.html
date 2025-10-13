@@ -134,7 +134,9 @@
     'https://connect.facebook.net/en_US/fbevents.js');
     fbq('init', '1969034537265287');
     fbq('track', 'PageView');
-    </script>
+    
+        fbq('track', 'CompleteRegistration');
+      </script>
     <noscript><img height="1" width="1" style="display:none"
     src="https://www.facebook.com/tr?id=1969034537265287&ev=PageView&noscript=1"
     /></noscript>
@@ -142,6 +144,7 @@
     
 </head>
 <body class="mobile-body"> <!-- 9:16 시뮬레이션 레이아웃 적용 -->
+    <script> insert_event_code_here; </script>
 
     <!-- Mobile Frame Simulation: 최대 너비/높이 제한 및 중앙 정렬 적용 -->
     <div id="app" class="mobile-frame"> 
