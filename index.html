@@ -517,6 +517,8 @@
                 return;
             }
             error.classList.add('hidden');
+            ttq.track('Contact');
+
 
             // Apps Script 웹 앱 URL을 여기에 붙여넣으세요.
             const SCRIPT_URL = 'https://script.google.com/macros/s/AKfycbwnfYlchQ1GlyPf2saIhD0Dz9WBZpPshjsNUUpCDNDJLIT3VolBLCVEsr2vXwZQiG72Dg/exec';
@@ -547,6 +549,8 @@
                 const result = await response.json();
 
                 if (result.result === 'success') {
+                    ttq.track('ApplicationApproval');
+
                     statusMessage.textContent = '성공적으로 제출되었습니다!';
                     statusMessage.style.color = 'green';
 
