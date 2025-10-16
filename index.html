@@ -449,6 +449,11 @@
     </div>
 
     <script>
+        
+        document.addEventListener("DOMContentLoaded", function() {
+          ttq.track('ViewContent');
+        });
+        
         // Function to show custom message modal (replaces alert())
         function showMessage(message) {
             // Reuse existing modal for simple messages by replacing content
@@ -549,7 +554,7 @@
                 const result = await response.json();
 
                 if (result.result === 'success') {
-                    ttq.track('ApplicationApproval');
+                    ttq.track('download');
 
                     statusMessage.textContent = '성공적으로 제출되었습니다!';
                     statusMessage.style.color = 'green';
