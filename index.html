@@ -449,9 +449,20 @@
     </div>
 
     <script>
-        
+
         document.addEventListener("DOMContentLoaded", function() {
-          ttq.track('ViewContent');
+           ttq.track('ViewContent', {
+    contents: [
+      {
+        content_id: 'stock-strategy-001',   // 고유 ID
+        content_name: '주식 핵심 공략법',   // 콘텐츠 이름
+        content_type: 'ebook',              // 콘텐츠 유형
+      }
+    ],
+    content_type: 'product',  // TikTok이 요구하는 상위 타입 (product, article 등)
+    currency: 'KRW',
+    value: 0                  // 무료 콘텐츠라면 0원
+  });
         });
         
         // Function to show custom message modal (replaces alert())
