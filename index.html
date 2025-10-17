@@ -449,7 +449,75 @@
     </div>
 
     <script>
-        
+
+        function sendContactEvent(phoneNumber) {
+        try {
+            // ① 고유 이벤트 ID 생성
+            const eventId = 'contact_' + Date.now();
+
+            // ② 이벤트 발생 시간
+            const eventTime = new Date().toISOString();
+
+            // ③ TikTok Pixel의 ttp 쿠키값 읽기
+            function getCookie(name) {
+            const match = document.cookie.match(new RegExp('(^| )' + name + '=([^;]+)'));
+            return match ? match[2] : null;
+            }
+            const ttp = getCookie('_ttp');
+
+            // ④ TikTok 이벤트 호출
+            ttq.track('Contact', {
+            event_id: eventId,
+            event_time: eventTime,
+            phone: phoneNumber,
+            ttp: ttp
+            });
+
+            console.log("✅ TikTok Contact 이벤트 전송 완료:", {
+            event_id: eventId,
+            event_time: eventTime,
+            phone: phoneNumber,
+            ttp: ttp
+            });
+
+        } catch (e) {
+            console.error("❌ TikTok Contact 이벤트 전송 실패:", e);
+        }
+        }
+
+        function sendPdfDownloadEvent() {
+        try {
+            // ① 고유 이벤트 ID (랜덤 or UUID)
+            const eventId = 'pdf_' + Date.now();
+
+            // ② 이벤트 발생 시간 (ISO 형식)
+            const eventTime = new Date().toISOString();
+
+            // ③ TikTok Pixel 쿠키 '_ttp' 값 가져오기
+            function getCookie(name) {
+            const match = document.cookie.match(new RegExp('(^| )' + name + '=([^;]+)'));
+            return match ? match[2] : null;
+            }
+            const ttp = getCookie('_ttp');
+
+            // ④ TikTok 이벤트 호출 (Pixel 기반)
+            ttq.track('Download', {
+            event_id: eventId,
+            event_time: eventTime,
+            ttp: ttp
+            });
+
+            console.log("✅ TikTok PdfDownload 이벤트 전송 완료:", {
+            event_id: eventId,
+            event_time: eventTime,
+            ttp: ttp
+            });
+
+        } catch (e) {
+            console.error("❌ TikTok PdfDownload 이벤트 전송 실패:", e);
+        }
+        }
+                
         // Function to show custom message modal (replaces alert())
         function showMessage(message) {
             // Reuse existing modal for simple messages by replacing content
@@ -518,7 +586,10 @@
                 return;
             }
             error.classList.add('hidden');
-            ttq.track('Contact', { content_id: 'ebook_01',content_name: '전자책 신청',content_type: 'product', value: 0, currency: 'KRW'});
+
+            console.log(input);
+            
+            sendContactEvent(input)
 
 
             // Apps Script 웹 앱 URL을 여기에 붙여넣으세요.
@@ -550,7 +621,12 @@
                 const result = await response.json();
 
                 if (result.result === 'success') {
-                    ttq.track('PdfDownload', { event_id: 'download_001' });
+
+                      // TikTok 이벤트 전송
+                      sendPdfDownloadEvent();
+
+
+                    // ttq.track('PdfDownload', { event_id: 'download_001' });
 
                     statusMessage.textContent = '성공적으로 제출되었습니다!';
                     statusMessage.style.color = 'green';
