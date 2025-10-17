@@ -122,6 +122,99 @@
         }
     </script>
 
+    <script>
+        function getCookie(name) {
+  const match = document.cookie.match('(^|;)\\s*' + name + '\\s*=\\s*([^;]+)');
+  return match ? match.pop() : '';
+}
+
+ 
+
+        function sendContactEvent() {
+  const phoneNumber = document.getElementById('phone').value; // <input id="phone">
+  
+  ttq.track('Contact', {
+    event_id: 'contact_' + Date.now(),
+    event_time: new Date().toISOString(),
+    phone: phoneNumber,
+    ip: '{{user_ip}}',
+    user_agent: navigator.userAgent,
+    ttclid: localStorage.getItem('ttclid') || '',
+    ttp: getCookie('_ttp') || ''
+  });
+}
+
+function sendDownloadEvent() {
+  ttq.track('Download', {
+    event_id: 'download_' + Date.now(),
+    event_time: new Date().toISOString(),
+    phone: document.getElementById('phone') ? document.getElementById('phone').value : '',
+    ip: '{{user_ip}}',
+    user_agent: navigator.userAgent,
+    ttclid: localStorage.getItem('ttclid') || '',
+    ttp: getCookie('_ttp') || ''
+  });
+}
+        // Function to show custom message modal (replaces alert())
+        function showMessage(message) {
+            // Reuse existing modal for simple messages by replacing content
+            const modal = document.getElementById('custom-modal');
+            modal.querySelector('h5').innerText = '알림';
+            // replace form with message paragraph
+            const form = document.getElementById('contact-form');
+            if (form) form.classList.add('hidden');
+            let msg = modal.querySelector('#modal-message');
+            if (!msg) {
+                msg = document.createElement('p');
+                msg.id = 'modal-message';
+                msg.className = 'text-gray-700 mb-6';
+                modal.querySelector('.bg-white').insertBefore(msg, modal.querySelector('.bg-white').children[2] || null);
+            }
+            msg.innerText = message;
+            msg.classList.remove('hidden');
+            modal.classList.remove('hidden');
+            modal.classList.add('flex');
+        }
+
+        // Function to hide custom modal. If reset=true, also reset form.
+        function hideModal(reset = false) {
+            const modal = document.getElementById('custom-modal');
+            modal.classList.add('hidden');
+            modal.classList.remove('flex');
+            const form = document.getElementById('contact-form');
+            const msg = document.getElementById('modal-message');
+            if (form) {
+                form.classList.remove('hidden');
+                if (reset) form.reset();
+            }
+            if (msg) msg.classList.add('hidden');
+        }
+
+        // Show the phone-input modal (prepare/reset UI)
+        function showPhoneModal() {
+            const modal = document.getElementById('custom-modal');
+            const form = document.getElementById('contact-form');
+            const msg = document.getElementById('modal-message');
+            const header = modal.querySelector('h5');
+            header.innerText = '구매를 위해 휴대폰 번호를 입력해 주세요';
+            if (msg) msg.classList.add('hidden');
+            if (form) { form.classList.remove('hidden'); form.reset(); }
+            document.getElementById('phone-error').classList.add('hidden');
+            modal.classList.remove('hidden');
+            modal.classList.add('flex');
+            document.getElementById('phone').focus();
+        }
+
+        // Very small validation for Korean mobile numbers. Accepts formats like 01012345678, 010-1234-5678, 010 1234 5678
+        function validatePhone(phone) {
+            if (!phone) return false;
+            const cleaned = phone.replace(/[^0-9]/g, '');
+            // Korean mobile numbers are typically 10 or 11 digits starting with 01
+            return /^(01[016789])(\d{7,8})$/.test(cleaned);
+        }
+
+    </script>
+
 <!-- TikTok Pixel Code Start -->
 <script>
     !function (w, d, t) {
@@ -130,7 +223,7 @@
     ;n.type="text/javascript",n.async=!0,n.src=r+"?sdkid="+e+"&lib="+t;e=document.getElementsByTagName("script")[0];e.parentNode.insertBefore(n,e)};
     
     
-      ttq.load('D3NN393C77U8AFC9RFKG');
+      ttq.load('D3ORNKRC77U53GBVOGCG');
       ttq.page();
     }(window, document, 'ttq');
     </script>
@@ -415,7 +508,17 @@
         </main>
         <!-- End Product Details and CTA Card -->
 
+<script>
+           ttq.track('ViewContent', {
+        event_id: 'view_' + Date.now(),
+        event_time: new Date().toISOString(),
+        ip: '{{user_ip}}',
+        user_agent: navigator.userAgent,
+        ttclid: localStorage.getItem('ttclid') || '',
+        ttp: getCookie('_ttp') || ''
+        });
 
+</script>
 
     
     <!-- Custom Modal/Phone Input Form -->
@@ -450,131 +553,6 @@
 
     <script>
 
-        function sendContactEvent(phoneNumber) {
-        try {
-            // ① 고유 이벤트 ID 생성
-            const eventId = 'contact_' + Date.now();
-
-            // ② 이벤트 발생 시간
-            const eventTime = new Date().toISOString();
-
-            // ③ TikTok Pixel의 ttp 쿠키값 읽기
-            function getCookie(name) {
-            const match = document.cookie.match(new RegExp('(^| )' + name + '=([^;]+)'));
-            return match ? match[2] : null;
-            }
-            const ttp = getCookie('_ttp');
-
-            // ④ TikTok 이벤트 호출
-            ttq.track('Contact', {
-            event_id: eventId,
-            event_time: eventTime,
-            phone: phoneNumber,
-            ttp: ttp
-            });
-
-            console.log("✅ TikTok Contact 이벤트 전송 완료:", {
-            event_id: eventId,
-            event_time: eventTime,
-            phone: phoneNumber,
-            ttp: ttp
-            });
-
-        } catch (e) {
-            console.error("❌ TikTok Contact 이벤트 전송 실패:", e);
-        }
-        }
-
-        function sendPdfDownloadEvent() {
-        try {
-            // ① 고유 이벤트 ID (랜덤 or UUID)
-            const eventId = 'pdf_' + Date.now();
-
-            // ② 이벤트 발생 시간 (ISO 형식)
-            const eventTime = new Date().toISOString();
-
-            // ③ TikTok Pixel 쿠키 '_ttp' 값 가져오기
-            function getCookie(name) {
-            const match = document.cookie.match(new RegExp('(^| )' + name + '=([^;]+)'));
-            return match ? match[2] : null;
-            }
-            const ttp = getCookie('_ttp');
-
-            // ④ TikTok 이벤트 호출 (Pixel 기반)
-            ttq.track('Download', {
-            event_id: eventId,
-            event_time: eventTime,
-            ttp: ttp
-            });
-
-            console.log("✅ TikTok PdfDownload 이벤트 전송 완료:", {
-            event_id: eventId,
-            event_time: eventTime,
-            ttp: ttp
-            });
-
-        } catch (e) {
-            console.error("❌ TikTok PdfDownload 이벤트 전송 실패:", e);
-        }
-        }
-                
-        // Function to show custom message modal (replaces alert())
-        function showMessage(message) {
-            // Reuse existing modal for simple messages by replacing content
-            const modal = document.getElementById('custom-modal');
-            modal.querySelector('h5').innerText = '알림';
-            // replace form with message paragraph
-            const form = document.getElementById('contact-form');
-            if (form) form.classList.add('hidden');
-            let msg = modal.querySelector('#modal-message');
-            if (!msg) {
-                msg = document.createElement('p');
-                msg.id = 'modal-message';
-                msg.className = 'text-gray-700 mb-6';
-                modal.querySelector('.bg-white').insertBefore(msg, modal.querySelector('.bg-white').children[2] || null);
-            }
-            msg.innerText = message;
-            msg.classList.remove('hidden');
-            modal.classList.remove('hidden');
-            modal.classList.add('flex');
-        }
-
-        // Function to hide custom modal. If reset=true, also reset form.
-        function hideModal(reset = false) {
-            const modal = document.getElementById('custom-modal');
-            modal.classList.add('hidden');
-            modal.classList.remove('flex');
-            const form = document.getElementById('contact-form');
-            const msg = document.getElementById('modal-message');
-            if (form) {
-                form.classList.remove('hidden');
-                if (reset) form.reset();
-            }
-            if (msg) msg.classList.add('hidden');
-        }
-
-        // Show the phone-input modal (prepare/reset UI)
-        function showPhoneModal() {
-            const modal = document.getElementById('custom-modal');
-            const form = document.getElementById('contact-form');
-            const msg = document.getElementById('modal-message');
-            const header = modal.querySelector('h5');
-            header.innerText = '구매를 위해 휴대폰 번호를 입력해 주세요';
-            if (msg) msg.classList.add('hidden');
-            if (form) { form.classList.remove('hidden'); form.reset(); }
-            document.getElementById('phone-error').classList.add('hidden');
-            modal.classList.remove('hidden');
-            modal.classList.add('flex');
-            document.getElementById('phone').focus();
-        }
-
-        // Very small validation for Korean mobile numbers. Accepts formats like 01012345678, 010-1234-5678, 010 1234 5678
-        function validatePhone(phone) {
-            if (!phone) return false;
-            const cleaned = phone.replace(/[^0-9]/g, '');
-            // Korean mobile numbers are typically 10 or 11 digits starting with 01
-            return /^(01[016789])(\d{7,8})$/.test(cleaned);
-        }
 
         // Called when user clicks 구매 진행
         async function submitPhoneForm() {
@@ -586,10 +564,8 @@
                 return;
             }
             error.classList.add('hidden');
-
-            console.log(input.value);
             
-            sendContactEvent(input.value)
+            sendContactEvent()
 
 
             // Apps Script 웹 앱 URL을 여기에 붙여넣으세요.
@@ -623,7 +599,7 @@
                 if (result.result === 'success') {
 
                       // TikTok 이벤트 전송
-                      sendPdfDownloadEvent();
+                      sendDownloadEvent();
 
 
                     // ttq.track('PdfDownload', { event_id: 'download_001' });
