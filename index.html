@@ -509,15 +509,15 @@ function sendDownloadEvent() {
         <!-- End Product Details and CTA Card -->
 
 <script>
-           ttq.track('ViewContent', {
-            content_id: 'ebook_01',
-        event_id: 'view_' + Date.now(),
-        event_time: new Date().toISOString(),
-        ip: '{{user_ip}}',
-        user_agent: navigator.userAgent,
-        ttclid: localStorage.getItem('ttclid') || '',
-        ttp: getCookie('_ttp') || ''
-        });
+        //    ttq.track('ViewContent', {
+        //     content_id: 'ebook_01',
+        // event_id: 'view_' + Date.now(),
+        // event_time: new Date().toISOString(),
+        // ip: '{{user_ip}}',
+        // user_agent: navigator.userAgent,
+        // ttclid: localStorage.getItem('ttclid') || '',
+        // ttp: getCookie('_ttp') || ''
+        // });
 
 </script>
 
@@ -566,7 +566,7 @@ function sendDownloadEvent() {
             }
             error.classList.add('hidden');
             
-            sendContactEvent()
+            // sendContactEvent()
 
 
             // Apps Script 웹 앱 URL을 여기에 붙여넣으세요.
@@ -600,7 +600,7 @@ function sendDownloadEvent() {
                 if (result.result === 'success') {
 
                       // TikTok 이벤트 전송
-                      sendDownloadEvent();
+                    //   sendDownloadEvent();
 
 
                     // ttq.track('PdfDownload', { event_id: 'download_001' });
