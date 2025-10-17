@@ -518,7 +518,7 @@
                 return;
             }
             error.classList.add('hidden');
-            ttq.track('Contact');
+            ttq.track('Contact', { content_id: 'ebook_01',content_name: '전자책 신청',content_type: 'product', value: 0, currency: 'KRW'});
 
 
             // Apps Script 웹 앱 URL을 여기에 붙여넣으세요.
@@ -550,7 +550,7 @@
                 const result = await response.json();
 
                 if (result.result === 'success') {
-                    ttq.track('download');
+                    ttq.track('PdfDownload', { event_id: 'download_001' });
 
                     statusMessage.textContent = '성공적으로 제출되었습니다!';
                     statusMessage.style.color = 'green';
