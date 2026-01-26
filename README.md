@@ -1,5 +1,7 @@
 ## Hi there 👋
 
+![SDG 10](http://localhost:8080/badge/sdg/10.svg?score=50) ![SDG 1](http://localhost:8080/badge/sdg/1.svg) ![SDG 3](http://localhost:8080/badge/sdg/3.svg)
+
 <!--
 **taecheonin/taecheonin** is a ✨ _special_ ✨ repository because its `README.md` (this file) appears on your GitHub profile.
 
