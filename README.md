@@ -1,6 +1,6 @@
 ## Hi there 👋
 
-![](https://komarev.com/ghpvc/?username=taecheonin&color=lightgrey)
+[![github-profile-views-counter](https://komarev.com/ghpvc/?username=taecheonin&color=lightgrey)](https://github.com/antonkomarev/github-profile-views-counter?tab=readme-ov-file)
 [![GitHub Streak](https://streak-stats.demolab.com/?user=taecheonin)](https://git.io/streak-stats)
 
 
