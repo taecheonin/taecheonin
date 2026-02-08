@@ -1,6 +1,8 @@
 ## Hi there 👋
 
 ![](https://komarev.com/ghpvc/?username=taecheonin&color=lightgrey)
+[![GitHub Streak](https://streak-stats.demolab.com/?user=DenverCoder1&theme=dark)](https://git.io/streak-stats)
+
 
 ![SDG 10](http://localhost:8080/badge/sdg/10.svg?score=50) ![SDG 1](http://localhost:8080/badge/sdg/1.svg) ![SDG 3](http://localhost:8080/badge/sdg/3.svg)
 
