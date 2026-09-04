@@ -1,23 +1,84 @@
-## Hi there 👋
+# 🏡 마을백 (Maeul100)
 
-[![github-profile-views-counter](https://komarev.com/ghpvc/?username=taecheonin&color=lightgrey)](https://github.com/antonkomarev/github-profile-views-counter?tab=readme-ov-file)
+> **백 개의 마을, 천 개의 모임, 만 개의 이야기.**  
+> AI 기술로 마을과 로컬을 넘어 **복지, 적정기술, 리빙랩, 비영리** 생태계를 더 깊이 연결하는 소셜 임팩트 플랫폼, **마을백**입니다.
 
-[![GitHub Streak](https://streak-stats.demolab.com/?user=taecheonin)](https://git.io/streak-stats)
+<p align="center">
+  <img src="https://www.maeul100.com/wp-content/uploads/2026/07/ChatGPT-Image-2026%EB%85%84-7%EC%9B%94-15%EC%9D%BC-%EC%98%A4%EC%A0%84-07_12_27-1024x1024.png" alt="마을백 메인 이미지" width="600"/>
+</p>
 
+<p align="center">
+  <img src="https://img.shields.io/badge/License-MIT-blue.svg" alt="License">
+  <img src="https://img.shields.io/badge/PRs-welcome-brightgreen.svg" alt="PRs Welcome">
+  <img src="https://img.shields.io/badge/AI-Powered-orange.svg" alt="AI Powered">
+  <img src="https://img.shields.io/badge/Domain-Social%20Impact-purple.svg" alt="Social Impact">
+</p>
 
-![SDG 10](http://localhost:8080/badge/sdg/10.svg?score=50) ![SDG 1](http://localhost:8080/badge/sdg/1.svg) ![SDG 3](http://localhost:8080/badge/sdg/3.svg)
+---
 
-<!--
-**taecheonin/taecheonin** is a ✨ _special_ ✨ repository because its `README.md` (this file) appears on your GitHub profile.
+## 💡 About Us (소개)
 
-Here are some ideas to get you started:
+안녕하세요! **마을백** 팀입니다.  
+우리는 소셜섹터 현장에서 활동하며 마을 곳곳에 숨겨진 재미있고 가치 있는 공동체, 그리고 사회적 가치를 만들어가는 현장들을 목격해 왔습니다.  
 
-- 🔭 I’m currently working on ...
-- 🌱 I’m currently learning ...
-- 👯 I’m looking to collaborate on ...
-- 🤔 I’m looking for help with ...
-- 💬 Ask me about ...
-- 📫 How to reach me: ...
-- 😄 Pronouns: ...
-- ⚡ Fun fact: ...
--->
+마을백은 로컬(마을) 공동체를 시작으로, **사회복지, 적정기술, 리빙랩, 비영리(NPO)** 등 사회적 문제를 해결하고자 하는 다양한 소셜 임팩트 영역으로 스펙트럼을 넓혀가고 있습니다.
+
+하지만 여전히 수많은 멋진 프로젝트와 기술, 복지 및 사회적 기여 활동들이 **‘홍보 부족’**과 **‘지속 가능성’**이라는 현실적인 장벽에 부딪히고 있습니다.
+
+그래서 우리는 **‘AI 기술’**과 **‘따뜻한 지역·사회적 생태계’**를 결합한 새로운 연결의 실험, **[마을백]**을 만들어갑니다.
+
+마을백은 단순한 온라인 게시판을 넘어, **AI 기반의 스마트 매칭과 맞춤형 홍보 지원**을 통해 마을 주민, 소상공인, 복지 현장, 적정기술 개발자, 리빙랩 연구자, 비영리 단체를 촘촘하고 스마트하게 연결합니다.
+
+---
+
+## ✨ Key Features (주요 기능)
+
+### 🤖 1. AI 기반 스마트 매칭 & 자원 연계
+* **이웃 & 모임 매칭**: 주민의 관심사, 거주 지역, 활동 목적을 분석하여 최적의 마을 모임, 리빙랩 프로젝트, 지역 봉사활동을 연결합니다.
+* **복지·비영리·소상공인 상생**: 지역 소상공인의 가치와 비영리/복지 기관의 소식을 이웃에게 전달하여 실질적인 참여와 단골을 연계합니다.
+
+### 📢 2. 지능형 자동 홍보 지원
+* **스마트 콘텐츠 생성**: 홍보 인력이 부족한 소규모 모임, 비영리단체(NPO), 적정기술 프로젝트를 위해 AI가 카드뉴스, 소식지, 사업 소개글을 자동으로 작성합니다.
+* **타겟 알림 & 채널 연동**: 소식이 꼭 필요한 지역 주민 및 복지 당사자에게 가장 효과적인 채널로 맞춤형 소식을 알립니다.
+
+### 🔬 3. 주민 주도 리빙랩 & 적정기술 실증 지원
+* **현장 실증(Testbed) 매칭**: 적정기술 및 소셜 벤처의 혁신 기술이 필요한 마을 현장을 매칭하고, 주민이 직접 참여하는 리빙랩 프로젝트 형성을 돕습니다.
+* **온·오프라인 융합 생태계 (O2O)**: 온라인에서의 관심과 기술이 실제 오프라인 마을 문제 해결 및 사회적 가치 창출로 이어지도록 다리를 놓습니다.
+
+---
+
+## 🎯 Target Audience (누구를 위한 서비스인가요?)
+
+| 대상 | 마을백이 제공하는 가치 |
+| :--- | :--- |
+| **🏡 마을 주민 & 당사자** | 내 집 근처의 숨은 모임, 취미 클래스, 지역 복지 소식 및 리빙랩 참여 기회 발견 |
+| **🌱 소규모 공동체 & 활동가** | AI 홍보 지원을 통한 모임원 모집 및 지속 가능한 프로젝트 운영 기반 확보 |
+| **🏪 지역 소상공인** | 마을 주민들과의 진정성 있는 관계 형성 및 사회적 가치 기반의 단골 확보 |
+| **❤️ 비영리(NPO) & 복지 기관** | 홍보 공수 절감, AI 기반 지원 자원 매칭 및 지역 사회 내 영향력(Impact) 극대화 |
+| **⚙️ 적정기술 & 리빙랩 팀** | 실제 현장(마을) 접점 확보, 주민 참여형 테스트베드 구축 및 기술 보급 촉진 |
+
+---
+
+## 🛠 Tech Stack (기술 스택)
+
+- **AI & NLP**: OpenAI GPT API, LangChain, Vector DB
+- **Frontend**: Next.js, React, Tailwind CSS
+- **Backend**: PHP, Python, Node.js
+- **Database**: MariaDB, PostgreSQL, Redis
+
+---
+
+## 🤝 Join Us (함께하기)
+
+지속 가능한 마을 공동체의 미래를 함께 만들어가고 싶으시거나, **AI를 활용한 복지, 적정기술, 리빙랩, 비영리 프로젝트**에 동참하고 싶다면 언제든 문을 두드려주세요!
+
+- 🌐 **웹사이트**: [www.maeul100.com](https://www.maeul100.com)
+- 📧 **문의 / 제휴**: `ceo@taecheonin.com`
+- 💬 **GitHub**: Issues 및 Pull Request를 통한 기여를 적극 환영합니다!
+
+---
+
+<p align="center">
+  <i>"백 개의 마을이 연결되고, 천 개의 모임이 피어나며, 만 개의 이야기가 퍼져나가는 세상"</i><br>
+  <b>© 2026 마을백 (Maeul100). All rights reserved.</b>
+</p>
